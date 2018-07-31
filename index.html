@@ -1,77 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>PanXun</title>
-        <a href="http://www.xdocin.com/xdoc?_func=to&amp;_format=html&amp;_cache=1&amp;_xdoc=http://www.xdocin.com/demo/demo.docx" target="_blank" rel="nofollow">XDOC</a>
-        <link href="404/css/public.css" rel="stylesheet" type="text/css" />
-        <link href="404/css/index.css" rel="stylesheet" type="text/css" />
-        <link href="404/css/404.css" rel="stylesheet" type="text/css" />
-        <script src="js/jquery-1.7.2.min.js"></script>
-        <script type="text/javascript">
-            $(function() {
-                var h = $(window).height();
-                $('body').height(h);
-                $('.mianBox').height(h);
-                centerWindow(".tipInfo");
-            });
 
-            //2.将盒子方法放入这个方，方便法统一调用
-            function centerWindow(a) {
-                center(a);
-                //自适应窗口
-                $(window).bind('scroll resize',
-                        function() {
-                            center(a);
-                        });
-            }
-
-            //1.居中方法，传入需要剧中的标签
-            function center(a) {
-                var wWidth = $(window).width();
-                var wHeight = $(window).height();
-                var boxWidth = $(a).width();
-                var boxHeight = $(a).height();
-                var scrollTop = $(window).scrollTop();
-                var scrollLeft = $(window).scrollLeft();
-                var top = scrollTop + (wHeight - boxHeight) / 2;
-                var left = scrollLeft + (wWidth - boxWidth) / 2;
-                $(a).css({
-                    "top": top,
-                    "left": left
-                });
-            }
-        </script>
-    </head>
-    <body>
-        <div class="mianBox">
-            <img src="404/images/yun0.png" alt="" class="yun yun0" />
-            <img src="404/images/yun1.png" alt="" class="yun yun1" />
-            <img src="404/images/yun2.png" alt="" class="yun yun2" />
-            <img src="404/images/bird.png" alt="" class="bird" />
-            <img src="404/images/san.png" alt="" class="san" />
-            <div class="tipInfo">
-                <div class="in">
-                    <div class="textThis">
-                        <h2>请假条</h2>
-                        <p>
-                            <span>哈哈哈哈哈,<br>每天熬在电脑面前的日子是真的无聊</br></span>
-                        </p>
-                        <script type="text/javascript">                            (function() {
-                                var wait = document.getElementById('wait'), href = document.getElementById('href').href;
-                                var interval = setInterval(function() {
-                                    var time = --wait.innerHTML;
-                                    if (time <= 0) {
-                                        location.href = href;
-                                        clearInterval(interval);
-                                    }
-                                    ;
-                                }, 1000);
-                            })();
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </body>
+<html>
+<body bgcolor="#abacad">
+<title>像我这样搬砖的人</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+<meta name="apple-mobile-web-app-capable" content="yes"> 
+<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+<meta name="format-detection" content="telephone=no"> 
+<center>
+<font size="20sp"><p>搬砖使我超快乐</p><p>我超喜欢搬砖的</p></font>
+<img style="border:5px solid #50c4e5" src=http://img.iisix.cn/upload/1519867075x3704260404.jpg height="190" width="190" border="1"/>
+<img style="border:5px solid #50c4e5" src="http://img.iisix.cn/upload/1518402566x3524672170.gif" height="190" width="190" border="2"/>
+<img style="border:5px solid #50c4e5" src="http://img.iisix.cn/upload/1518401983x3524672170.gif" height="190" width="190">
+<img style="border:5px solid #50c4e5" src="http://img.iisix.cn/upload/1519868468x3704260404.gif" height="190" width="190"/>
+</center>
+<!-- <script>
+   alert("就先放着吧😄");
+   </script>
+-->
+<!--<script> 
+document.oncontextmenu=new Function("return false") 
+document.onselectstart=new Function("return false") 
+</script>
+-->
+</body>
 </html>
