@@ -22,7 +22,7 @@ window.onload = function() {
   var messages = [
     '嗨',
     '我是潘勋.',
-    '我是一名学生.📖',
+    '我是一名学生.这是我的个人主页',
     '期待与你成为朋友. <a href="mailto:2730739514@qq.com">给我发邮件</a>',
    <!-- ' <a href="http://pan.svvme.com"  target="_blank" class="btn-slide"><span class="circle"><i class="fa fa-cloud"></i></span><span class="title">Disc</span><span class="title-hover">＞▽＜</span></a> <a href="http://i.svvme.com/"  target="_blank" class="btn-slide2"><span class="circle2"><i class="fa fa-tag"></i></span><span class="title2">Channel</span><span class="title-hover2">( ´▽` )</span> </a>  ',-->
     <!--'<h4>其他页面</h4><a href="pixcat.html">pixcat.html</a>｜<a href="heart.html">heart.html</a>',-->
