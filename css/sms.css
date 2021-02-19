@@ -16,7 +16,7 @@ body {
   min-width: 100vw;
   min-height: 100vh;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: #9EEA6A;
+  background: #fff;
 }
 a{
   text-decoration: none;
@@ -42,7 +42,7 @@ a{
   border-bottom-left-radius: 0;
 }
 .bubble.left {
-  background: rgba(206,206,206,0.50);
+  background: #9EEA6A;
 }
 .bubble:after {
   content: "";
