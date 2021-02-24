@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>PanXun's blog</title>
+		<link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			#navBar {
+				/* height: 50px; */
+				height: 100vh;
+				width: 100%;
+				/* background-color: #000; */
+				background-image: url(http://api.cucldk.com/bing.php);
+				background-size: cover;
+				background-attachment: fixed;
+			}
+
+			#navBar .logo {
+				width: 40px;
+				margin-left: 1em;
+				margin-top: 5px;
+				border-radius: 100%;
+				float: left;
+			}
+
+			#navBar ul {
+				color: #fff;
+				line-height: 50px;
+			}
+
+			#navBar ul li {
+				margin-left: 15px;
+				float: left;
+			}
+
+			#navBar a {
+				color: #fff;
+				text-decoration: none;
+			}
+
+			#navBar .jinrishici-sentence {
+				font-weight: 100;
+				font-size: 18px;
+				margin-top: 10px;
+				line-height: 30px;
+				padding: 2px 5px;
+				border: 1px solid #fff;
+				border-radius: 15px;
+			}
+
+			#navBar .menu {
+				position: absolute;
+				right: 40px;
+			}
+
+			#navBar .menu i {
+				padding-right: 3px;
+				font-size: 16px;
+			}
+
+			@media(max-width: 991px) {
+				#navBar .jinrishici-sentence {
+					display: none;
+					/* 这一尺寸时不显示 */
+				}
+			}
+
+			#main {
+				height: 100%;
+				width: 100%;
+			}
+
+			#main ul {
+				position: relative;
+				height: 100%;
+				width: 100%;
+			}
+
+			#main ul li {
+				border-radius: 5px;
+				line-height: 100px;
+				border: 1px dashed green;
+				text-align: center;
+				height: 100px;
+				margin: 20px;
+				width: 100%;
+				box-shadow: 5px 5px 5px 5px #888888;
+			}
+
+			/* 			.avatar{
+				border-radius: 100%;
+				margin-top: 5px;
+				margin-left: 5px;
+			} */
+		</style>
+
+	</head>
+
+	<body>
+		<!-- 		<script type="text/javascript">
+			window.onload = function () {
+			    var li = document.querySelectorAll("#test>li");
+			    for (var i = 0; i < li.length; i++) {
+			        li[i].onclick = function () {
+			            alert(this.innerText);
+			        }
+			    }
+			}
+			
+
+		</script>
+		 -->
+		<div id="navBar">
+			<img class="logo" src="http://q.qlogo.cn/headimg_dl?dst_uin=2730739514&spec=640&img_type=jpg">
+			<ul>
+				<li class="jinrishici-sentence">loading...</li>
+				<div class="menu">
+					<li><i class="fa fa-home"></i><a href="#">首页</a></li>
+					<li><i class="fa fa-qq"></i><a href="tencent://message/?uin=2730739514">找我</a></li>
+					<li><i class="fa fa-info-circle"></i><a onclick="alert('一个在读带专生,一个只会cv的废物.')">关于</a></li>
+				</div>
+			</ul>
+		</div>
+
+
+		<div id="main">
+			<ul id="test">
+				<li>
+					<img src="http://q.qlogo.cn/headimg_dl?dst_uin=2730739514&spec=640&img_type=jpg" alt="" class="avatar" width="80px"
+					 height="80px" align="left">
+					<p>article1</p>
+				</li>
+				<li>
+					<img src="http://q.qlogo.cn/headimg_dl?dst_uin=2730739514&spec=640&img_type=jpg" alt="" class="avatar" width="80px"
+					 height="80px" align="left">
+					<p>article2</p>
+				</li>
+				<li>
+					<img src="http://q.qlogo.cn/headimg_dl?dst_uin=2730739514&spec=640&img_type=jpg" alt="" class="avatar" width="80px"
+					 height="80px" align="left">
+					<p>article3</p>
+				</li>
+				<li>
+					<img src="http://q.qlogo.cn/headimg_dl?dst_uin=2730739514&spec=640&img_type=jpg" alt="" class="avatar" width="80px"
+					 height="80px" align="left">
+					<p>article4</p>
+				</li>
+				<li>
+					<img src="http://q.qlogo.cn/headimg_dl?dst_uin=2730739514&spec=640&img_type=jpg" alt="" class="avatar" width="80px"
+					 height="80px" align="left">
+					<p>article5</p>
+				</li>
+				<li>
+					<img src="http://q.qlogo.cn/headimg_dl?dst_uin=2730739514&spec=640&img_type=jpg" alt="" class="avatar" width="80px"
+					 height="80px" align="left">
+					<p>article6</p>
+				</li>
+				<li>
+					<img src="http://q.qlogo.cn/headimg_dl?dst_uin=2730739514&spec=640&img_type=jpg" alt="" class="avatar" width="80px"
+					 height="80px" align="left">
+					<p>article7</p>
+				</li>
+				<li>
+					<img src="http://q.qlogo.cn/headimg_dl?dst_uin=2730739514&spec=640&img_type=jpg" alt="" class="avatar" width="80px"
+					 height="80px" align="left">
+					<p>article8</p>
+				</li>
+		</div>
+
+		<div class="footer" style="width: 100%;height: 66px; ">
+			<!-- 播放器 -->
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MoePlayer/APlayer@v1.10.1/dist/APlayer.min.css">
+			<script src="https://cdn.jsdelivr.net/gh/MoePlayer/APlayer@v1.10.1/dist/APlayer.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+			<meting-js server="netease" type="song" autoplay="true" mini="true" fixed="true" id="512359195"></meting-js>
+
+		</div>
+
+	</body>
+</html>
