@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title class="jinrishici-sentence">Loading</title>
+		<link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+		<script src="https://cdn.bootcdn.net/ajax/libs/layui/2.5.7/layui.all.js"></script>
+		<link href="https://cdn.bootcdn.net/ajax/libs/layer/3.1.1/mobile/need/layer.css" rel="stylesheet">
+		<style type="text/css">
+			* {
+				list-style: none;
+			}
+
+			html {
+				background-color: #eee;
+			}
+
+			#navBar {
+				/* height: 50px; */
+				position: relative;
+				top: -16px;
+				height: 100vh;
+				width: 100%;
+				background-color: #6ebeec;
+				background-image: url(http://api.cucldk.com/bing.php);
+				background-size: cover;
+				background-attachment: fixed;
+			}
+
+			#navBar .logo {
+				width: 40px;
+				margin-left: 1em;
+				margin-top: 10px;
+				border-radius: 100%;
+				float: left;
+				transition: all 1.0s;
+			}
+
+			#navBar .logo:hover {
+				transform: rotate(360deg);
+			}
+
+			#navBar a {
+				color: #fff;
+				text-decoration: none;
+			}
+
+			#navBar ul {
+				color: #fff;
+				line-height: 50px;
+			}
+
+			#navBar ul li {
+				margin-left: 15px;
+				float: left;
+			}
+
+			#navBar .jinrishici-sentence {
+				font-weight: 100;
+				font-size: 18px;
+				margin-top: 10px;
+				line-height: 30px;
+				padding: 2px 10px;
+				border: 1px solid #fff;
+				border-radius: 30px;
+			}
+
+			#navBar .menu {
+				position: absolute;
+				right: 40px;
+			}
+
+			#navBar .menu i {
+				padding-right: 3px;
+				font-size: 16px;
+			}
+
+			#navBar .show {
+				padding-top: 40vh;
+				width: 100%;
+			}
+
+			#navBar .info {
+				text-align: center;
+				color: #fffeff;
+				font-weight: 300;
+				font-size: 6em;
+			}
+
+			@media(max-width: 991px) {
+
+				/* 手机尺寸时 */
+				#navBar .jinrishici-sentence {
+					display: none;
+				}
+
+				#navBar .info {
+					font-size: 2.2em;
+				}
+			}
+
+			#btn {
+				width: 100%;
+				text-align: center;
+			}
+
+			#btn ul {
+				display: inline-block;
+			}
+
+			#btn ul li {
+				margin-right: 2px;
+				font-size: 22px;
+				padding: 6px 13px;
+				background-color: #eee;
+				border-radius: 100%;
+				line-height: 35px;
+			}
+
+			.heading {
+				font-family: 'Lato', sans-serif;
+				font-weight: 200;
+				position: relative;
+				padding-bottom: 12px;
+				margin-bottom: 1em;
+			}
+
+			.heading:before {
+				content: "";
+				width: 100%;
+				padding: 0 25px;
+				border-bottom: 1px solid #eee;
+				position: absolute;
+				bottom: -1px;
+				left: -25px;
+				box-sizing: unset;
+			}
+
+			.heading:after {
+				transition: all .35s ease-out;
+				content: "";
+				position: absolute;
+				background: #2196f3;
+				width: 1em;
+				height: 5px;
+				bottom: -3px;
+				left: 0;
+				border-radius: 10px;
+				box-shadow: 0 2px 12px rgba(19, 91, 145, 0.8);
+			}
+
+			.heading:hover:after {
+				width: 2em;
+			}
+
+			.recent-post-item {
+				margin: 20px 0px;
+				display: -webkit-box;
+				display: -moz-box;
+				display: -webkit-flex;
+				display: -ms-flexbox;
+				display: box;
+				display: flex;
+				height: 20em;
+				width: 100%;
+				border-radius: 12px 8px 8px 12px;
+				background: var(--card-bg);
+				-webkit-box-shadow: 0 4px 8px 6px rgba(7, 17, 27, .06);
+				box-shadow: 0 4px 8px 6px rgba(7, 17, 27, .06);
+				-webkit-transition: all .3s;
+				-moz-transition: all .3s;
+				-o-transition: all .3s;
+				transition: all .3s;
+				-webkit-box-orient: horizontal;
+				-moz-box-orient: horizontal;
+				-o-box-orient: horizontal;
+				-webkit-flex-direction: row;
+				-ms-flex-direction: row;
+				flex-direction: row;
+				-webkit-box-align: center;
+				-moz-box-align: center;
+				-o-box-align: center;
+				-ms-flex-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-ms-transition: all .3s;
+			}
+
+
+			@media screen and (max-width:768px) {
+				.recent-post-item {
+					border-radius: 12px 12px 8px 8px;
+				}
+			}
+
+
+			.recent-post-item:hover {
+				-webkit-box-shadow: 0 4px 12px 12px rgba(7, 17, 27, .15);
+				box-shadow: 0 4px 12px 12px rgba(7, 17, 27, .15);
+			}
+
+
+			.recent-post-item:hover img.post_bg {
+				-webkit-transform: scale(1.1);
+				-moz-transform: scale(1.1);
+				-o-transform: scale(1.1);
+				transform: scale(1.1);
+				-ms-transform: scale(1.1);
+			}
+
+
+			.recent-post-item .right_radius {
+				border-radius: 0 8px 8px 0;
+				-webkit-box-ordinal-group: 2;
+				-moz-box-ordinal-group: 2;
+				-o-box-ordinal-group: 2;
+				-ms-flex-order: 2;
+				-webkit-order: 2;
+				order: 2;
+			}
+
+
+			.recent-post-item .left_radius {
+				border-radius: 8px 0 0 8px;
+			}
+
+
+			.recent-post-item .right_radius {
+				border-radius: 0 8px 8px 0;
+				-webkit-box-ordinal-group: 2;
+				-moz-box-ordinal-group: 2;
+				-o-box-ordinal-group: 2;
+				-ms-flex-order: 2;
+				-webkit-order: 2;
+				order: 2;
+			}
+
+
+
+			.recent-post-item .post_cover {
+				overflow: hidden;
+				width: 45%;
+				height: 100%;
+				-webkit-mask-image: -webkit-radial-gradient(#fff, #000);
+			}
+
+			.recent-post-item .post_cover img.post_bg {
+				width: 100%;
+				height: 100%;
+				-webkit-transition: all .6s;
+				-moz-transition: all .6s;
+				-o-transition: all .6s;
+				transition: all .6s;
+				-ms-transition: all .6s;
+				object-fit: cover;
+			}
+
+			.recent-post-item .post_cover img.post_bg:hover {
+				-webkit-transform: scale(1.1);
+				-moz-transform: scale(1.1);
+				-o-transform: scale(1.1);
+				transform: scale(1.1);
+				-ms-transform: scale(1.1);
+			}
+
+			.recent-post-item>.recent-post-info {
+				display: inline-block;
+				overflow: hidden;
+				padding: 0 40px;
+				width: 55%;
+			}
+
+			.recent-post-item>.recent-post-info.no-cover {
+				width: 100%;
+			}
+
+
+			.recent-post-item>.recent-post-info>.article-title {
+				margin-bottom: .3rem;
+				color: var(--text-highlight-color);
+				font-size: 1.72em;
+				line-height: 1.4;
+				-webkit-transition: all .2s ease-in-out;
+				-moz-transition: all .2s ease-in-out;
+				-o-transition: all .2s ease-in-out;
+				transition: all .2s ease-in-out;
+				-ms-transition: all .2s ease-in-out;
+				-webkit-line-clamp: 2;
+			}
+
+			.recent-post-item>.recent-post-info>.article-title:hover {
+				color: #5246e2;
+			}
+
+
+
+			.recent-post-item>.recent-post-info>.article-meta-wrap {
+				color: #858585;
+				font-size: 90%;
+			}
+
+			.recent-post-item>.recent-post-info>.article-meta-wrap>.post-meta-date {
+				cursor: default;
+			}
+
+			.recent-post-item>.recent-post-info>.article-meta-wrap .sticky {
+				color: #ff7242;
+			}
+
+			.recent-post-item>.recent-post-info>.article-meta-wrap i {
+				margin: 0 .2rem 0 0;
+			}
+
+			.recent-post-item>.recent-post-info>.article-meta-wrap .article-meta-label {
+				padding-right: .2rem;
+			}
+
+			.recent-post-item>.recent-post-info>.article-meta-wrap .article-meta__separator {
+				margin: 0 .3rem;
+			}
+
+			.recent-post-item>.recent-post-info>.article-meta-wrap .article-meta__link {
+				margin: 0 .2rem;
+			}
+
+			.recent-post-item>.recent-post-info>.article-meta-wrap .fa-angle-right {
+				margin: 0 .2rem;
+			}
+
+			.recent-post-item>.recent-post-info>.article-meta-wrap a {
+				color: #858585;
+			}
+
+			.recent-post-item>.recent-post-info>.article-meta-wrap a:hover {
+				color: #5246e2;
+				text-decoration: underline;
+			}
+
+			.recent-post-item>.recent-post-info>.content {
+				margin-top: .3rem;
+				-webkit-line-clamp: 3;
+			}
+
+			@media screen and (max-width:768px) {
+				.recent-post-item {
+					height: auto !important;
+					-webkit-box-orient: vertical;
+					-moz-box-orient: vertical;
+					-o-box-orient: vertical;
+					-webkit-flex-direction: column;
+					-ms-flex-direction: column;
+					flex-direction: column;
+				}
+
+				.recent-post-item .post_cover {
+					width: 100%;
+					height: 230px;
+					border-radius: 8px 8px 0 0;
+					-webkit-box-ordinal-group: 1 !important;
+					-moz-box-ordinal-group: 1 !important;
+					-o-box-ordinal-group: 1 !important;
+					-ms-flex-order: 1 !important;
+					-webkit-order: 1 !important;
+					order: 1 !important;
+				}
+
+				.recent-post-item .recent-post-info {
+					padding: 1rem 1rem 1.5rem;
+					width: 100%;
+					-webkit-box-ordinal-group: 2 !important;
+					-moz-box-ordinal-group: 2 !important;
+					-o-box-ordinal-group: 2 !important;
+					-ms-flex-order: 2 !important;
+					-webkit-order: 2 !important;
+					order: 2 !important;
+				}
+
+				.recent-post-item .recent-post-info.no-cover {
+					padding: 1.5rem 1rem;
+				}
+
+				.recent-post-item .recent-post-info .article-title {
+					font-size: 1.43em;
+				}
+
+				.recent-post-item .recent-post-info .content {
+					height: auto;
+				}
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			function getRTime() {
+				var EndTime = new Date('2022/12/1 10:00:00'); //截止时间 
+				var NowTime = new Date();
+				var t = EndTime.getTime() - NowTime.getTime();
+
+				var d = Math.floor(t / 1000 / 60 / 60 / 24);
+				var h = Math.floor(t / 1000 / 60 / 60 % 24);
+				var m = Math.floor(t / 1000 / 60 % 60);
+				var s = Math.floor(t / 1000 % 60);
+
+				document.getElementById("t_d").innerHTML = d + "天";
+				document.getElementById("t_h").innerHTML = h + "时";
+				document.getElementById("t_m").innerHTML = m + "分";
+				document.getElementById("t_s").innerHTML = s + "秒";
+			}
+			setInterval(getRTime, 1000);
+		</script>
+		<div id="navBar">
+			<img class="logo" src="http://q.qlogo.cn/headimg_dl?dst_uin=2730739514&spec=640&img_type=jpg" title="QQ:2730739514">
+			<ul>
+				<li class="jinrishici-sentence">诗词加载中...</li>
+				<div class="menu">
+					<li><i class="fa fa-home"></i><a href="#">首页</a></li>
+					<li><i class="fa fa-qq"></i><a href="tencent://message/?uin=2730739514">找我</a></li>
+					<li><i class="fa fa-info-circle" id="aboutme"></i><a onclick="layer.tips('一个在读带专生,一个loser', '#aboutme', {tips: [3, '#78BA32']});">关于</a></li>
+				</div>
+			</ul>
+
+			<div class="show">
+				<div id="countDown" style="width: 100%; height: auto;color: white; text-align: center;">
+					<span>距离专升本还有</span>
+					<span id="t_d">00天</span>
+					<span id="t_h">00时</span>
+					<span id="t_m">00分</span>
+					<span id="t_s">00秒</span>
+				</div>
+				<div class="info">滑小稽的故事</div>
+				<div id="btn">
+					<ul>
+						<a href="#">
+							<li><i class="fa fa-github" style="color: #0d3e63;"></i></li>
+						</a>
+						<a href="#">
+							<li><i class="fa fa-qq" style="color: #ff80ab;"></i></li>
+						</a>
+						<a href="#">
+							<li><i class="fa fa-wechat" style="color: #4caf50;"></i></li>
+						</a>
+						<a href="#">
+							<li><i class="fa fa-telegram" style="color: #2196f3;"></i></li>
+						</a>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="container" style="margin-top: 15px;">
+			<div class="row">
+				<div class="col-md-12">
+					<h1 class="heading">日记</h1>
+
+					<div class="recent-post-item">
+						<div class="post_cover left_radius">
+							<a href="#" title="">
+								<img class="post_bg entered loaded" src="https://pic.stackoverflow.wiki/uploadImages/175/15/185/123/2021/02/24/21/52/bc3b7130-1f7b-4a26-88b7-68984d74606c.jpg" />
+							</a>
+						</div>
+						<div class="recent-post-info">
+							<a class="article-title" href="#" title="滑小稽的故事呀">
+								滑小稽的故事呀
+							</a>
+							<div class="article-meta-wrap">
+								<span class="post-meta-date">
+									<i class="fa fa-book">
+									</i>
+									<span class="article-meta-label">
+										发表于
+									</span>
+									<time>
+										2077-00-00
+									</time>
+								</span>
+								<span class="article-meta">
+									<span class="article-meta__separator">
+										|
+									</span>
+									<i class="fa fa-tag">
+									</i>
+									<a class="article-meta__categories" href="#">
+										学习笔记
+									</a>
+								</span>
+							</div>
+							<div class="content">
+								测试文本
+							</div>
+						</div>
+					</div>
+
+					<div class="recent-post-item">
+						<div class="post_cover right_radius">
+							<a href="#" title="">
+								<img class="post_bg entered loaded" src="https://pic.stackoverflow.wiki/uploadImages/175/15/185/123/2021/02/25/02/32/a33d978b-c76d-4ce3-81ed-78fc22dea04a.png" />
+							</a>
+						</div>
+						<div class="recent-post-info">
+							<a class="article-title" href="#" title="滑小稽的故事呀">
+								滑小稽的故事呀
+							</a>
+							<div class="article-meta-wrap">
+								<span class="post-meta-date">
+									<i class="fa fa-book">
+									</i>
+									<span class="article-meta-label">
+										发表于
+									</span>
+									<time>
+										2077-00-00
+									</time>
+								</span>
+								<span class="article-meta">
+									<span class="article-meta__separator">
+										|
+									</span>
+									<i class="fa fa-tag">
+									</i>
+									<a class="article-meta__categories" href="#">
+										学习笔记
+									</a>
+								</span>
+							</div>
+							<div class="content">
+								测试文本
+							</div>
+						</div>
+					</div>
+
+					<div class="recent-post-item">
+						<div class="post_cover left_radius">
+							<a href="#" title="">
+								<img class="post_bg entered loaded" src="https://pic.stackoverflow.wiki/uploadImages/175/15/185/123/2021/02/25/02/27/a642229a-3865-4029-9932-694832358f31.png" />
+							</a>
+						</div>
+						<div class="recent-post-info">
+							<a class="article-title" href="#" title="滑小稽的故事呀">
+								滑小稽的故事呀
+							</a>
+							<div class="article-meta-wrap">
+								<span class="post-meta-date">
+									<i class="fa fa-book">
+									</i>
+									<span class="article-meta-label">
+										发表于
+									</span>
+									<time>
+										2077-00-00
+									</time>
+								</span>
+								<span class="article-meta">
+									<span class="article-meta__separator">
+										|
+									</span>
+									<i class="fa fa-tag">
+									</i>
+									<a class="article-meta__categories" href="#">
+										学习笔记
+									</a>
+								</span>
+							</div>
+							<div class="content">
+								测试文本
+							</div>
+						</div>
+					</div>
+
+					<div class="recent-post-item">
+						<div class="post_cover right_radius">
+							<a href="#" title="">
+								<img class="post_bg entered loaded" src="https://pic.stackoverflow.wiki/uploadImages/175/15/185/123/2021/02/25/02/34/b1ceaeb3-0409-4ea6-a3fb-f5110908d46c.jpg" />
+							</a>
+						</div>
+						<div class="recent-post-info">
+							<a class="article-title" href="#" title="滑小稽的故事呀">
+								滑小稽的故事呀
+							</a>
+							<div class="article-meta-wrap">
+								<span class="post-meta-date">
+									<i class="fa fa-book">
+									</i>
+									<span class="article-meta-label">
+										发表于
+									</span>
+									<time>
+										2077-00-00
+									</time>
+								</span>
+								<span class="article-meta">
+									<span class="article-meta__separator">
+										|
+									</span>
+									<i class="fa fa-tag">
+									</i>
+									<a class="article-meta__categories" href="#">
+										学习笔记
+									</a>
+								</span>
+							</div>
+							<div class="content">
+								测试文本
+							</div>
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+
+		<div class="footer" style="width: 100%;height: 66px; ">
+			<!-- 播放器 -->
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MoePlayer/APlayer@v1.10.1/dist/APlayer.min.css">
+			<script src="https://cdn.jsdelivr.net/gh/MoePlayer/APlayer@v1.10.1/dist/APlayer.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+			<meting-js auto="http://music.163.com/playlist?id=6632359158" mini="true" fixed="true" autoplay="true"></meting-js>
+
+		</div>
+
+	</body>
+</html>
