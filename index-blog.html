@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>滑小稽的个人博客</title>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/sentsin/layui@master/dist/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" />
+		<script src="https://cdn.jsdelivr.net/gh/sentsin/layui@master/dist/layui.all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MoePlayer/APlayer@v1.10.1/dist/APlayer.min.css">
+		<script src="https://cdn.jsdelivr.net/gh/MoePlayer/APlayer@v1.10.1/dist/APlayer.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+		<style type="text/css">
+			* {
+				list-style: none;
+			}
+
+			body,
+			html {
+				font-family: 'Lato', sans-serif;
+				background-color: #eee;
+			}
+
+			#navBar {
+				
+				position: relative;
+				height: 100vh;
+				width: 100%;
+				background: url('http://api.cucldk.com/bing.php') #6ebeec;
+				background-size: cover;
+				background-attachment: fixed;
+				-webkit-box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.25);
+				overflow: hidden;
+			}
+
+			#navBar .navBarTitle {
+				margin-left: 1em;
+				font-size: 27px;
+				font-weight: 800;
+				line-height: 50px;
+				color: #fff;
+				float: left;
+			}
+
+			#navBar a {
+				color: #fff;
+				text-decoration: none;
+			}
+
+			#navBar ul {
+				color: #fff;
+				line-height: 50px;
+			}
+
+			#navBar ul li {
+				margin-left: 15px;
+				float: left;
+			}
+
+			#navBar .jinrishici-sentence {
+				font-weight: 100;
+				margin-top: 10px;
+				line-height: 30px;
+				font-size: 18px;
+				padding: 2px 10px;
+				border: 1px solid #fff;
+				border-radius: 30px;
+				background-color: rgba(238, 238, 238, 0.1);
+			}
+
+
+			#navBar .navBarMenu {
+				position: absolute;
+				right: 30px;
+			}
+
+			#navBar .navBarMenu i {
+				padding-right: 3px;
+				font-size: 16px;
+			}
+
+			#navBar .navBarMain {
+				
+				position: absolute;
+				top: 30vh;
+				width: 100%;
+			}
+
+			#navBar .navBarMain br {
+				margin-bottom: 10px;
+			}
+
+			#navBar .navBarMain .subTitle {
+				text-align: center;
+				color: #fffeff;
+				font-weight: 300;
+				font-size: 6em;
+				white-space: nowrap;
+				display: none;
+			}
+
+			#navBar .navBarMain .avatar {
+				display: block;
+				margin: 0 auto;
+				width: 190px;
+				border-radius: 100%;
+				border: 5px solid #fff;
+
+			}
+
+			#navBar .navBarMain .signature {
+				margin: 0 auto;
+				text-align: center;
+				line-height: 30px;
+				width: 180px;
+				padding: 12px 15px;
+				border-radius: 120px;
+				background-color: rgba(255, 255, 255, 0.8);
+				white-space: nowrap;
+			}
+
+			#navBar .navBarMain .signature p {
+				color: #f98511;
+				font-size: 18px;
+				font-weight: 500;
+				overflow: hidden;
+			}
+
+
+			@media(max-width: 991px) {
+
+				
+				#navBar .navBarMain {
+					top: 45vh;
+				}
+
+				#navBar .jinrishici-sentence {
+					display: none;
+				}
+
+				#navBar .navBarMain .subTitle {
+					font-size: 3.2em;
+					display: block;
+				}
+
+				#navBar .navBarMain .signature {
+					width: 50%;
+				}
+
+				#navBar .navBarMain .avatar {
+					display: none;
+				}
+			}
+
+
+			.heading {
+				font-family: 'Lato', sans-serif;
+				font-weight: 200;
+				position: relative;
+				padding-bottom: 12px;
+				margin-bottom: 1em;
+			}
+
+			.heading:before {
+				content: "";
+				width: 100%;
+				padding: 0 25px;
+				border-bottom: 1px solid #eee;
+				position: absolute;
+				bottom: -1px;
+				left: -25px;
+				box-sizing: unset;
+			}
+
+			.heading:after {
+				transition: all .35s ease-out;
+				content: "";
+				position: absolute;
+				background: #2196f3;
+				width: 1em;
+				height: 5px;
+				bottom: -3px;
+				left: 0;
+				border-radius: 10px;
+				box-shadow: 0 2px 12px rgba(19, 91, 145, 0.8);
+			}
+
+			.heading:hover:after {
+				width: 2em;
+			}
+
+			.article-item {
+				margin-bottom: 15px;
+				display: -webkit-box;
+				display: -moz-box;
+				display: -webkit-flex;
+				display: -ms-flexbox;
+				display: box;
+				display: flex;
+				height: 20em;
+				width: 100%;
+				border-radius: 12px 8px 8px 12px;
+				background: var(--card-bg);
+				-webkit-box-shadow: 0 4px 8px 6px rgba(7, 17, 27, .06);
+				box-shadow: 0 4px 8px 6px rgba(7, 17, 27, .06);
+				-webkit-transition: all .3s;
+				-moz-transition: all .3s;
+				-o-transition: all .3s;
+				transition: all .3s;
+				-webkit-box-orient: horizontal;
+				-moz-box-orient: horizontal;
+				-o-box-orient: horizontal;
+				-webkit-flex-direction: row;
+				-ms-flex-direction: row;
+				flex-direction: row;
+				-webkit-box-align: center;
+				-moz-box-align: center;
+				-o-box-align: center;
+				-ms-flex-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-ms-transition: all .3s;
+			}
+
+
+			@media screen and (max-width:768px) {
+				.article-item {
+					border-radius: 12px 12px 8px 8px;
+				}
+			}
+
+
+			.article-item:hover {
+				-webkit-box-shadow: 0 4px 12px 12px rgba(7, 17, 27, .15);
+				box-shadow: 0 4px 12px 12px rgba(7, 17, 27, .15);
+			}
+
+
+			.article-item:hover img.article_bg {
+				-webkit-transform: scale(1.1);
+				-moz-transform: scale(1.1);
+				-o-transform: scale(1.1);
+				transform: scale(1.1);
+				-ms-transform: scale(1.1);
+			}
+
+
+			.article-item .right_radius {
+				border-radius: 0 8px 8px 0;
+				-webkit-box-ordinal-group: 2;
+				-moz-box-ordinal-group: 2;
+				-o-box-ordinal-group: 2;
+				-ms-flex-order: 2;
+				-webkit-order: 2;
+				order: 2;
+			}
+
+
+			.article-item .left_radius {
+				border-radius: 8px 0 0 8px;
+			}
+
+
+			.article-item .right_radius {
+				border-radius: 0 8px 8px 0;
+				-webkit-box-ordinal-group: 2;
+				-moz-box-ordinal-group: 2;
+				-o-box-ordinal-group: 2;
+				-ms-flex-order: 2;
+				-webkit-order: 2;
+				order: 2;
+			}
+
+
+
+			.article-item .article_cover {
+				overflow: hidden;
+				width: 45%;
+				height: 100%;
+				-webkit-mask-image: -webkit-radial-gradient(#fff, #000);
+			}
+
+			.article-item .article_cover img.article_bg {
+				width: 100%;
+				height: 100%;
+				-webkit-transition: all .6s;
+				-moz-transition: all .6s;
+				-o-transition: all .6s;
+				transition: all .6s;
+				-ms-transition: all .6s;
+				object-fit: cover;
+			}
+
+			.article-item .article_cover img.article_bg:hover {
+				-webkit-transform: scale(1.1);
+				-moz-transform: scale(1.1);
+				-o-transform: scale(1.1);
+				transform: scale(1.1);
+				-ms-transform: scale(1.1);
+			}
+
+			.article-item>.article-info {
+				display: inline-block;
+				overflow: hidden;
+				padding: 0 40px;
+				width: 55%;
+			}
+
+			.article-item>.article-info.no-cover {
+				width: 100%;
+			}
+
+
+			.article-item>.article-info>.article-title {
+				margin-bottom: .3rem;
+				color: var(--text-highlight-color);
+				font-size: 1.72em;
+				line-height: 1.4;
+				-webkit-transition: all .2s ease-in-out;
+				-moz-transition: all .2s ease-in-out;
+				-o-transition: all .2s ease-in-out;
+				transition: all .2s ease-in-out;
+				-ms-transition: all .2s ease-in-out;
+				-webkit-line-clamp: 2;
+			}
+
+			.article-item>.article-info>.article-title:hover {
+				color: #5246e2;
+			}
+
+
+
+			.article-item>.article-info>.article-meta-wrap {
+				color: #858585;
+				font-size: 90%;
+			}
+
+			.article-item>.article-info>.article-meta-wrap>.article-date {
+				cursor: default;
+			}
+
+			.article-item>.article-info>.article-meta-wrap .sticky {
+				color: #ff7242;
+			}
+
+			.article-item>.article-info>.article-meta-wrap i {
+				margin: 0 .2rem 0 0;
+			}
+
+			.article-item>.article-info>.article-meta-wrap .article-label {
+				padding-right: .2rem;
+			}
+
+			.article-item>.article-info>.article-meta-wrap .article-separator {
+				margin: 0 .3rem;
+			}
+
+			.article-item>.article-info>.article-meta-wrap .article-meta__link {
+				margin: 0 .2rem;
+			}
+
+			.article-item>.article-info>.article-meta-wrap .fa-angle-right {
+				margin: 0 .2rem;
+			}
+
+			.article-item>.article-info>.article-meta-wrap a {
+				color: #858585;
+			}
+
+			.article-item>.article-info>.article-meta-wrap a:hover {
+				color: #5246e2;
+				text-decoration: underline;
+			}
+
+			.article-item>.article-info>.content {
+				margin-top: .3rem;
+				-webkit-line-clamp: 3;
+			}
+
+			@media screen and (max-width:768px) {
+				.article-item {
+					height: auto !important;
+					-webkit-box-orient: vertical;
+					-moz-box-orient: vertical;
+					-o-box-orient: vertical;
+					-webkit-flex-direction: column;
+					-ms-flex-direction: column;
+					flex-direction: column;
+				}
+
+				.article-item .article_cover {
+					width: 100%;
+					height: 230px;
+					border-radius: 8px 8px 0 0;
+					-webkit-box-ordinal-group: 1 !important;
+					-moz-box-ordinal-group: 1 !important;
+					-o-box-ordinal-group: 1 !important;
+					-ms-flex-order: 1 !important;
+					-webkit-order: 1 !important;
+					order: 1 !important;
+				}
+
+				.article-item .article-info {
+					margin-left: 2rem;
+					padding: 1rem 1rem 1.5rem;
+					width: 100%;
+					-webkit-box-ordinal-group: 2 !important;
+					-moz-box-ordinal-group: 2 !important;
+					-o-box-ordinal-group: 2 !important;
+					-ms-flex-order: 2 !important;
+					-webkit-order: 2 !important;
+					order: 2 !important;
+				}
+
+				.article-item .article-info.no-cover {
+					padding: 1.5rem 1rem;
+				}
+
+				.article-item .article-info .article-title {
+					font-size: 1.43em;
+				}
+
+				.article-item .article-info .content {
+					height: auto;
+				}
+				
+			}
+		</style>
+
+	</head>
+
+	<body>
+		
+		<script type="text/javascript">
+			function getRTime() {
+				var EndTime = new Date('2022/12/1 10:00:00');
+				var NowTime = new Date();
+				var t = EndTime.getTime() - NowTime.getTime();
+		
+				var d = Math.floor(t / 1000 / 60 / 60 / 24);
+				var h = Math.floor(t / 1000 / 60 / 60 % 24);
+				var m = Math.floor(t / 1000 / 60 % 60);
+				var s = Math.floor(t / 1000 % 60);
+		
+				document.getElementById("t_d").innerHTML = d + "天";
+				document.getElementById("t_h").innerHTML = h + "时";
+				document.getElementById("t_m").innerHTML = m + "分";
+				document.getElementById("t_s").innerHTML = s + "秒";
+			}
+			setInterval(getRTime, 0);
+		</script>
+		<div id="navBar">
+			<div class="navBarTitle">滑小稽的博客</div>
+			<ul>
+				<li class="jinrishici-sentence">Loading...</li>
+				<div class="navBarMenu">
+					<a href="#">
+						<li><i class="fa fa-home"></i>首页</li>
+					</a>
+					<a href="tencent://message/?uin=2730739514">
+						<li><i class="fa fa-qq"></i>找我</li>
+					</a>
+					<a onclick="layer.tips('一个在读带专生,一个loser.', '#aboutMe', {tips: [3, '#78BA32']});">
+						<li><i class="fa fa-info-circle" id="aboutMe"></i>关于</li>
+					</a>
+				</div>
+			</ul>
+
+
+
+			<div class="navBarMain layui-anim layui-anim-upbit">
+				<div class="subTitle">滑小稽的故事</div>
+				<img class="avatar" src="http://q.qlogo.cn/headimg_dl?dst_uin=2730739514&spec=640&img_type=jpg">
+				<br class="br">
+				<div class="signature">
+					<p>你好，我是滑小稽</p>
+				</div>
+				<br class="br">
+				<div id="countDown" style="width: 100%; height: auto;color: white; text-align: center; font-weight: bold;">
+					<span>距离专升本还有</span>
+					<span id="t_d">00天</span>
+					<span id="t_h">00时</span>
+					<span id="t_m">00分</span>
+					<span id="t_s">00秒</span>
+				</div>
+				<br class="br">
+				
+			</div>
+		</div>
+
+
+
+		<div class="layui-container" style="margin-top: 30px;">
+			<div class="layui-row">
+				<div class="layui-col-md12">
+					<h1 class="heading">文章</h1>
+
+					<div class="article-item">
+						<div class="article_cover left_radius">
+							<a href="#" title="">
+								<img class="article_bg entered loaded" src="https://pic.stackoverflow.wiki/uploadImages/175/15/185/123/2021/02/24/21/52/bc3b7130-1f7b-4a26-88b7-68984d74606c.jpg" />
+							</a>
+						</div>
+						<div class="article-info">
+							<a class="article-title" href="#" title="滑小稽的故事">
+								滑小稽的故事
+							</a>
+							<div class="article-meta-wrap">
+								<span class="article-date">
+									<i class="fa fa-book">
+									</i>
+									<span class="article-label">
+										发表于
+									</span>
+									<time>
+										2077-07-07
+									</time>
+								</span>
+								<span class="article-meta">
+									<span class="article-separator">
+										|
+									</span>
+									<i class="fa fa-tag">
+									</i>
+									<a class="article-categories" href="#">
+										生活
+									</a>
+								</span>
+							</div>
+							<div class="content">
+								故事的小黄花.........
+							</div>
+						</div>
+					</div>
+
+					<div class="article-item">
+						<div class="article_cover right_radius">
+							<a href="#" title="">
+								<img class="article_bg entered loaded" src="https://pic.stackoverflow.wiki/uploadImages/175/15/185/123/2021/02/25/02/32/a33d978b-c76d-4ce3-81ed-78fc22dea04a.png" />
+							</a>
+						</div>
+						<div class="article-info">
+							<a class="article-title" href="#" title="滑小稽的故事">
+								滑小稽的故事
+							</a>
+							<div class="article-meta-wrap">
+								<span class="article-date">
+									<i class="fa fa-book">
+									</i>
+									<span class="article-label">
+										发表于
+									</span>
+									<time>
+										2077-07-07
+									</time>
+								</span>
+								<span class="article-meta">
+									<span class="article-separator">
+										|
+									</span>
+									<i class="fa fa-tag">
+									</i>
+									<a class="article-categories" href="#">
+										生活
+									</a>
+								</span>
+							</div>
+							<div class="content">
+								故事的小黄花.........
+							</div>
+						</div>
+					</div>
+
+					<div class="article-item">
+						<div class="article_cover left_radius">
+							<a href="#" title="">
+								<img class="article_bg entered loaded" src="https://pic.stackoverflow.wiki/uploadImages/175/15/185/123/2021/02/25/02/27/a642229a-3865-4029-9932-694832358f31.png" />
+							</a>
+						</div>
+						<div class="article-info">
+							<a class="article-title" href="#" title="滑小稽的故事">
+								滑小稽的故事
+							</a>
+							<div class="article-meta-wrap">
+								<span class="article-date">
+									<i class="fa fa-book">
+									</i>
+									<span class="article-label">
+										发表于
+									</span>
+									<time>
+										2077-07-07
+									</time>
+								</span>
+								<span class="article-meta">
+									<span class="article-separator">
+										|
+									</span>
+									<i class="fa fa-tag">
+									</i>
+									<a class="article-categories" href="#">
+										生活
+									</a>
+								</span>
+							</div>
+							<div class="content">
+								故事的小黄花.........
+							</div>
+						</div>
+					</div>
+
+					<div class="article-item">
+						<div class="article_cover right_radius">
+							<a href="#" title="">
+								<img class="article_bg entered loaded" src="https://pic.stackoverflow.wiki/uploadImages/175/15/185/123/2021/02/25/02/34/b1ceaeb3-0409-4ea6-a3fb-f5110908d46c.jpg" />
+							</a>
+						</div>
+						<div class="article-info">
+							<a class="article-title" href="#" title="滑小稽的故事">
+								滑小稽的故事
+							</a>
+							<div class="article-meta-wrap">
+								<span class="article-date">
+									<i class="fa fa-book">
+									</i>
+									<span class="article-label">
+										发表于
+									</span>
+									<time>
+										2077-07-07
+									</time>
+								</span>
+								<span class="article-meta">
+									<span class="article-separator">
+										|
+									</span>
+									<i class="fa fa-tag">
+									</i>
+									<a class="article-categories" href="#">
+										生活
+									</a>
+								</span>
+							</div>
+							<div class="content">
+								故事的小黄花.........
+							</div>
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+
+		
+
+		<meting-js url="img/bgMusic.mp3" name="蒲公英的约定" artist="周杰伦" cover="img/playerCoverPic.jpg" mini="true" fixed="true" autoplay="true">
+			<pre hidden="hidden">
+					[00:01.00]歌曲名 蒲公英的约定
+					[00:02.00]歌手名 周杰伦
+					[00:03.00]作词：方文山
+					[00:04.00]作曲：周杰伦
+					[00:29.20]小学篱笆旁的蒲公英
+					[00:35.87]是记忆里有味道的风景
+					[00:42.88]午睡操场传来蝉的声音
+					[00:49.98]多少年后也还是很好听
+					[00:57.41]将愿望折纸飞机寄成信
+					[01:04.09]因为我们等不到那流星
+					[01:11.20]认真投决定命运的硬币
+					[01:18.22]却不知道到底能去哪里
+					[01:25.26]一起长大的约定
+					[01:30.60]那样清晰
+					[01:34.06]拉过勾的我相信
+					[01:39.41]说好要一起旅行
+					[01:44.72]是你如今
+					[01:48.17]唯一坚持的任性
+					[02:22.14]在走廊上罚站打手心
+					[02:28.90]我们却注意窗边的蜻蜓
+					[02:35.88]我去到哪里你都跟很紧
+					[02:42.90]很多的梦在等待着进行
+					[02:49.96]一起长大的约定
+					[02:55.27]那样清晰
+					[02:58.73]拉过勾的我相信
+					[03:04.09]说好要一起旅行
+					[03:09.35]是你如今
+					[03:12.92]唯一坚持的任性
+					[03:18.18]一起长大的约定
+					[03:23.50]那样真心
+					[03:27.12]与你聊不完的曾经
+					[03:32.33]而我已经分不清
+					[03:37.69]你是友情还是错过的爱情
+				</pre>
+		</meting-js>
+		
+		<script type="text/javascript">
+			function clickEffect() {
+				let balls = [];
+				let longPressed = false;
+				let longPress;
+				let multiplier = 0;
+				let width, height;
+				let origin;
+				let normal;
+				let ctx;
+				const colours = ["#F73859", "#14FFEC", "#00E0FF", "#FF99FE", "#FAF15D"];
+				const canvas = document.createElement("canvas");
+				document.body.appendChild(canvas);
+				canvas.setAttribute("style",
+					"width: 100%; height: 100%; top: 0; left: 0; z-index: 99999; position: fixed; pointer-events: none;");
+				const pointer = document.createElement("span");
+				pointer.classList.add("pointer");
+				document.body.appendChild(pointer);
+				if (canvas.getContext && window.addEventListener) {
+					ctx = canvas.getContext("2d");
+					updateSize();
+					window.addEventListener('resize', updateSize, false);
+					loop();
+					window.addEventListener("mousedown", function(e) {
+						pushBalls(randBetween(10, 20), e.clientX, e.clientY);
+						document.body.classList.add("is-pressed");
+						longPress = setTimeout(function() {
+							document.body.classList.add("is-longpress");
+							longPressed = true;
+						}, 500);
+					}, false);
+					window.addEventListener("mouseup", function(e) {
+						clearInterval(longPress);
+						if (longPressed == true) {
+							document.body.classList.remove("is-longpress");
+							pushBalls(randBetween(50 + Math.ceil(multiplier), 100 + Math.ceil(multiplier)), e.clientX, e.clientY);
+							longPressed = false;
+						}
+						document.body.classList.remove("is-pressed");
+					}, false);
+					window.addEventListener("mousemove", function(e) {
+						let x = e.clientX;
+						let y = e.clientY;
+						pointer.style.top = y + "px";
+						pointer.style.left = x + "px";
+					}, false);
+				} else {
+					console.log("canvas or addEventListener is unsupported!");
+				}
+
+				function updateSize() {
+					canvas.width = window.innerWidth * 2;
+					canvas.height = window.innerHeight * 2;
+					canvas.style.width = window.innerWidth + 'px';
+					canvas.style.height = window.innerHeight + 'px';
+					ctx.scale(2, 2);
+					width = (canvas.width = window.innerWidth);
+					height = (canvas.height = window.innerHeight);
+					origin = {
+						x: width / 2,
+						y: height / 2
+					};
+					normal = {
+						x: width / 2,
+						y: height / 2
+					};
+				}
+				class Ball {
+					constructor(x = origin.x, y = origin.y) {
+						this.x = x;
+						this.y = y;
+						this.angle = Math.PI * 2 * Math.random();
+						if (longPressed == true) {
+							this.multiplier = randBetween(14 + multiplier, 15 + multiplier);
+						} else {
+							this.multiplier = randBetween(6, 12);
+						}
+						this.vx = (this.multiplier + Math.random() * 0.5) * Math.cos(this.angle);
+						this.vy = (this.multiplier + Math.random() * 0.5) * Math.sin(this.angle);
+						this.r = randBetween(8, 12) + 3 * Math.random();
+						this.color = colours[Math.floor(Math.random() * colours.length)];
+					}
+					update() {
+						this.x += this.vx - normal.x;
+						this.y += this.vy - normal.y;
+						normal.x = -2 / window.innerWidth * Math.sin(this.angle);
+						normal.y = -2 / window.innerHeight * Math.cos(this.angle);
+						this.r -= 0.3;
+						this.vx *= 0.9;
+						this.vy *= 0.9;
+					}
+				}
+
+				function pushBalls(count = 1, x = origin.x, y = origin.y) {
+					for (let i = 0; i < count; i++) {
+						balls.push(new Ball(x, y));
+					}
+				}
+
+				function randBetween(min, max) {
+					return Math.floor(Math.random() * max) + min;
+				}
+
+				function loop() {
+					ctx.fillStyle = "rgba(255, 255, 255, 0)";
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+					for (let i = 0; i < balls.length; i++) {
+						let b = balls[i];
+						if (b.r < 0) continue;
+						ctx.fillStyle = b.color;
+						ctx.beginPath();
+						ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2, false);
+						ctx.fill();
+						b.update();
+					}
+					if (longPressed == true) {
+						multiplier += 0.2;
+					} else if (!longPressed && multiplier >= 0) {
+						multiplier -= 0.4;
+					}
+					removeBall();
+					requestAnimationFrame(loop);
+				}
+
+				function removeBall() {
+					for (let i = 0; i < balls.length; i++) {
+						let b = balls[i];
+						if (b.x + b.r < 0 || b.x - b.r > width || b.y + b.r < 0 || b.y - b.r > height || b.r < 0) {
+							balls.splice(i, 1);
+						}
+					}
+				}
+			}
+			clickEffect();
+		</script>
+
+	</body>
+</html>
